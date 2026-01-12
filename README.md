@@ -1,3 +1,7 @@
-# ExpressJs-Learning-
+# Express JS Learning
 
-Learning Express.js by building practice projects
+This repository contains my Express.js practice code.
+
+## Status
+
+Learning in progress 🚀
