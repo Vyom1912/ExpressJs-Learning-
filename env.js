@@ -1,7 +1,7 @@
 // export const PORT = isNaN(process.env.PORT) ? 3000 : parseInt(process.env.PORT);
 import { z, ZodError } from "zod";
 
-const portSchema = z.coerce.number().min(1).max(65000).default(3000);
+const portSchema = z.coerce.number().min(1).max(65000);
 export const PORT = portSchema.parse(process.env.PORT);
 
 // example

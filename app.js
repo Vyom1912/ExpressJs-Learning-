@@ -5,6 +5,21 @@ import { PORT } from "./env.js";
 import path from "path";
 
 const app = express();
+// -------------------------------------------------------------------------------------------
+// Absolute PATH
+// we can fecth the folder and dependancies of indexhtml files like css, script and image
+// it should be static website while using this to connect multiple file in single response
+
+// const staticPath = path.join(import.meta.dirname, "public", "index.html");
+// app.use(express.static(staticPath));
+// -----
+// if i wnat localhost://3001/public/ location than
+// app.use("/public", express.static(staticPath));
+// OR
+app.use(express.static("public"));
+const homePagePath = path.join("public", "index.html");
+
+// -------------------------------------------------------------------------------------------
 
 app.get("/", (req, res) => {
   //  for importing File Path in express
@@ -16,7 +31,7 @@ app.get("/", (req, res) => {
   // res.send("Hi")
   // -------------------------------------------------------------------------------------------
   // For Sending Whole HTML file as Response
-  const homePagePath = path.join(import.meta.dirname, "public", "index.html");
+  // code is above in Absolute PATH
   res.sendFile(homePagePath);
   // -------------------------------------------------------------------------------------------
 });
