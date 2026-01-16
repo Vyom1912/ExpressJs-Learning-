@@ -12,6 +12,12 @@ import path from "path";
 console.log(import.meta.dirname);
 console.log(import.meta.filename);
 
+// Solution for OlderVersion
+// import path from "path";
+// const __filename = new URL(import.meta.url).pathname;
+// const __dirname = path.dirname(__filename);
+// console.log({ __dirname, __filename });
+
 const app = express();
 // -------------------------------------------------------------------------------------------
 // Absolute PATH
