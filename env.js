@@ -2,7 +2,7 @@
 import { z, ZodError } from "zod";
 
 const portSchema = z.coerce.number().min(1).max(65000);
-export const PORT = portSchema.parse(process.env.PORT);
+export const PORT = portSchema.parse(process.env.PORT) || 3000;
 
 // example
 // const ageSchema = z.number().min(18).max(100).int();

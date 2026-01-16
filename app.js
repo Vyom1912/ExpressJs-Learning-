@@ -4,6 +4,14 @@ import express from "express";
 import { PORT } from "./env.js";
 import path from "path";
 
+// thos Is Comman JS
+// console.log(__dirname);
+// console.log(__filename);
+//  this directory path and file name is not able to run in ES Module(We write: "Type":"module" in Pakage.json file)
+// To Show These, Node.js 20.11.0+ version upfated with following
+console.log(import.meta.dirname);
+console.log(import.meta.filename);
+
 const app = express();
 // -------------------------------------------------------------------------------------------
 // Absolute PATH
@@ -15,6 +23,7 @@ const app = express();
 // -----
 // if i wnat localhost://3001/public/ location than
 // app.use("/public", express.static(staticPath));
+// -----
 // OR
 app.use(express.static("public"));
 const homePagePath = path.join("public", "index.html");
