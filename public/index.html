@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -38,145 +38,38 @@
       crossorigin="anonymous" />
   </head>
   <body>
-    <!-- themaroons -->
-    <div class="themaroons">
-      <div class="maroon-box">
-        <div class="area">
-          <div class="mover"></div>
-        </div>
-      </div>
+    <div class="floating-icons">
+      <div class="icon">📧</div>
+      <div class="icon">📱</div>
+      <div class="icon">💬</div>
+      <div class="icon">🌟</div>
     </div>
-    <!-- ---------------------------------------------------------- -->
-    <!-- header -->
-    <header class="header" id="header">
-      <nav class="navbar flex">
-        <div class="logo flex">
-          <div class="logo-img flex">
-            <img src="image/text-logo.png" alt="" />
+    <section class="contact-section">
+      <div class="contact-container">
+        <h2>Get In Touch</h2>
+        <form id="contactForm" action="/contect" method="post">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              required />
           </div>
-        </div>
-        <ul class="nav-list flex active-nav text-center">
-          <li><a href="#hero">home</a></li>
-          <li><a href="#about">about</a></li>
-          <li><a href="#services">services</a></li>
-          <li><a href="#project">projects</a></li>
-          <li><a href="#team">team</a></li>
-          <li><a href="#contect">contect</a></li>
-        </ul>
-        <div class="mobile-nav-btn">
-          <i class="fa-solid fa-bars nav-icon" name="hamburger"></i>
-          <i class="fa-solid fa-xmark nav-icon" name="close"></i>
-        </div>
-      </nav>
-    </header>
-    <!-- ---------------------------------------------------------- -->
-
-    <section class="hero section reveal" id="hero">
-      <div class="container flex">
-        <div class="slider">
-          <div
-            id="carouselExampleIndicators"
-            class="carousel slide"
-            data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="0"
-                class="active"></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="1"></li>
-              <li
-                data-target="#carouselExampleIndicators"
-                data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <div class="text-center">
-                  <h1 class="text-center">
-                    WE SPECIALIZE IN BUILDING AWESOME BRAND
-                  </h1>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="text-center">
-                  <h1>OUR GOAL IS TO MAKE THINGS AWESOME</h1>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <div class="text-center">
-                  <h1>FULLY CUSTOMIZABLE TO YOUR NEEDS</h1>
-                </div>
-              </div>
-            </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Your Message"
+              required></textarea>
           </div>
-        </div>
-        <div class="hero-btn flex">
-          <a href="#contect">start here</a>
-        </div>
+          <button type="submit">Send Message</button>
+        </form>
       </div>
     </section>
 
-    <!-- ---------------------------------------------------------- -->
-    <!-- about us -->
-    <!-- ---------------------------------------------------------- -->
-
-    <section class="about section" id="about">
-      <div class="container reveal">
-        <div class="heading flex flex-column text-center">
-          <h1>about <span>us</span></h1>
-        </div>
-        <div class="box flex">
-          <div class="about-img flex">
-            <img src="image/amico.png" alt="" />
-          </div>
-          <div class="about-text">
-            <p>
-              Welcome to The Maroons! We specialize in crafting captivating
-              online experiences through UI/UX design, responsive web design,
-              and landing page optimization. Our focus is on user-centric
-              interfaces, ensuring seamless navigation and engagement across
-              devices. Additionally, we offer business card and stationery
-              design services to enhance your brand's offline presence. With our
-              expertise, we aim to elevate your brand's online presence and
-              drive conversions. Join us in creating visually appealing and
-              impactful digital solutions tailored to your unique needs.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ---------------------------------------------------------- -->
-    <!-- footer -->
-    <!-- ---------------------------------------------------------- -->
-
-    <footer class="footer flex flex-column">
-      <div class="footer-icones flex">
-        <i class="fa-brands fa-facebook-f"></i>
-        <i class="fa-brands fa-instagram"></i
-        ><i class="fa-brands fa-x-twitter"></i
-        ><i class="fa-brands fa-github"></i> <i class="fa-brands fa-discord"></i
-        ><i class="fa-brands fa-telegram"></i>
-      </div>
-      <div class="footer-links flex">
-        <a href="#hero" class="decorato">home</a>
-        <a href="#about">about</a>
-        <a href="#services">services</a>
-        <a href="#team">team</a>
-        <a href="#contect">contect</a>
-      </div>
-      <div class="footer-text">
-        <p>© copy right own by <span>The Maroons</span></p>
-      </div>
-    </footer>
-    <!-- ---------------------------------------------------------- -->
-    <!-- ---------------------------------------------------------- -->
-
-    <!-- scroll top  -->
-    <button onclick="topFunction()" id="myBtn" title="Go to top">
-      <i class="fa-solid fa-arrow-up"></i>
-    </button>
     <!-- ------------------------------------------------ -->
     <script src="script.js"></script>
     <!-- ------------------------------------------------ -->

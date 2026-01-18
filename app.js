@@ -59,32 +59,34 @@ console.log("ENV PORT:", process.env.PORT);
 // we can fecth the folder and dependancies of indexhtml files like css, script and image
 // it should be static website while using this to connect multiple file in single response
 // const staticPath = path.join(import.meta.dirname, "public", "index.html");
-// app.use(express.static(staticPath));
+const staticPath = path.join(import.meta.dirname, "public");
+app.use(express.static(staticPath));
+// after these above line we dont need to write any app.get for home page
+// it will automatically fetch index.html file from public folder
 // -----
 // if i wnat localhost://3001/public/ location than
 // app.use("/public", express.static(staticPath));
 // -----
 // OR
-app.use(express.static("public")); // provide direct folder name and it will fetch all files inside that folder
-const homePagePath = path.join("public", "index.html");
+// app.use(express.static("public")); // provide direct folder name and it will fetch all files inside that folder
+// const homePagePath = path.join("public", "index.html");
 
 // -------------------------------------------------------------------------------------------
 // For Home Page Route Normally
-app.get("/", (req, res) => {
-  //  for importing File Path in express
-  // console.log(__dirname);
-  // console.log(__filename);
-  // console.log(import.meta.dirname);
-  // const __filename = new URL(import.meta.url).pathname;
-  // console.log(__filename);
-  // res.send("Hi")
-  // -------------------------------------------------------------------------------------------
-  // res.sendFile(staticPath);
-  // For Sending Whole HTML file as Response
-  // code is above in Absolute PATH
-  // res.sendFile(homePagePath);
-  // -------------------------------------------------------------------------------------------
-});
+// app.get("/", (req, res) => {
+//  for importing File Path in express
+// console.log(__dirname);
+// console.log(__filename);
+// console.log(import.meta.dirname);
+// const __filename = new URL(import.meta.url).pathname;
+// console.log(__filename);
+// res.send("Hi")
+// -------------------------------------------------------------------------------------------
+// res.sendFile(staticPath);
+// For Sending Whole HTML file as Response
+// code is above in Absolute PATH
+// res.sendFile(homePagePath);
+// });
 // -------------------------------------------------------------------------------------------
 // FOR Dynamic URL Parameter and Slug Handling
 // app.get("/profile/:username", (req, res) => {
@@ -103,17 +105,43 @@ app.get("/", (req, res) => {
 
 // -------------------------------------------------------------------------------------------
 // For Query Parameters Handling
-app.get("/product", (req, res) => {
-  // console.log(req.query);
-  // for Single Query Parameter
-  // res.send(`Product Page of <b> ${req.query.name} </b>`);
-  // http://localhost:3001/product?name=iphone
-  //  for multiple Query Parameters
-  // res.send(
-  //   `Product Page of <b> ${req.query.name} </b> and Price is <b> ${req.query.price} </b>`
-  // );
-  // http://localhost:3001/product?name=iphone&price=50000
-  // query parameters are visible in URL after ? and are key value pair separated by &.
+// app.get("/product", (req, res) => {
+// console.log(req.query);
+// for Single Query Parameter
+// res.send(`Product Page of <b> ${req.query.name} </b>`);
+// http://localhost:3001/product?name=iphone
+//  for multiple Query Parameters
+// res.send(
+//   `Product Page of <b> ${req.query.name} </b> and Price is <b> ${req.query.price} </b>`
+// );
+// http://localhost:3001/product?name=iphone&price=50000
+// query parameters are visible in URL after ? and are key value pair separated by &.
+// });
+
+// -------------------------------------------------------------------------------------------
+// form submission handling
+// -------------------
+// 1. Get Method Form Submission Handling
+// app.get("/contect", (req, res) => {
+// console.log(req.query);
+// res.redirect("/");
+// result will be redirect to home page after form submission and query parameters will be visible in URL
+// http://localhost:3001/contect?name=John+Doe&message=Hello+there%21
+// also in terminal we can see the object form of query parameters
+// });
+// -------------------
+// 2. Post Method Form Submission Handling
+// we have to use middleware before handling post request and we have to change app.get to app.post
+app.use(express.urlencoded({ extended: true })); // to handle form data in post method and json data, we can use express.json() also for json data
+// we can see the data in terminal
+// {extended: true} means it can handle nested objects and arrays in form data
+// -------------------
+
+app.post("/contect", (req, res) => {
+  console.log(req.body);
+  res.redirect("/");
+  // but currently it will show undefined because express does not know how to handle form data
+  // we have to use middleware to handle form data
 });
 
 // -------------------------------------------------------------------------------------------
