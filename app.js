@@ -4,13 +4,13 @@ import express from "express";
 import { PORT } from "./env.js";
 import path from "path";
 
-// thos Is Comman JS
+// this Is Comman JS
 // console.log(__dirname);
 // console.log(__filename);
 //  this directory path and file name is not able to run in ES Module(We write: "Type":"module" in Pakage.json file)
 // To Show These, Node.js 20.11.0+ version upfated with following
-console.log(import.meta.dirname);
-console.log(import.meta.filename);
+// console.log(import.meta.dirname);
+// console.log(import.meta.filename);
 
 // Solution for OlderVersion
 // import path from "path";
@@ -23,7 +23,6 @@ const app = express();
 // Absolute PATH
 // we can fecth the folder and dependancies of indexhtml files like css, script and image
 // it should be static website while using this to connect multiple file in single response
-
 // const staticPath = path.join(import.meta.dirname, "public", "index.html");
 // app.use(express.static(staticPath));
 // -----
@@ -31,11 +30,11 @@ const app = express();
 // app.use("/public", express.static(staticPath));
 // -----
 // OR
-app.use(express.static("public"));
+app.use(express.static("public")); // provide direct folder name and it will fetch all files inside that folder
 const homePagePath = path.join("public", "index.html");
 
 // -------------------------------------------------------------------------------------------
-
+// For Home Page Route Normally
 app.get("/", (req, res) => {
   //  for importing File Path in express
   // console.log(__dirname);
@@ -45,11 +44,29 @@ app.get("/", (req, res) => {
   // console.log(__filename);
   // res.send("Hi")
   // -------------------------------------------------------------------------------------------
+  // res.sendFile(staticPath);
+
   // For Sending Whole HTML file as Response
   // code is above in Absolute PATH
   res.sendFile(homePagePath);
   // -------------------------------------------------------------------------------------------
 });
+// -------------------------------------------------------------------------------------------
+// FOR Dynamic URL Parameter
+// app.get("/profile/:username", (req, res) => {
+//   console.log(req.params);
+//   res.send(`Welcome to <b> ${req.params.username} </b> profile page`);
+// });
+// --------------------------------
+app.get("/profile/:username/article/:slug", (req, res) => {
+  console.log(req.params);
+
+  const formattedeSlug = req.params.slug.replace(/-/g, " "); // replacing - with space
+  res.send(
+    `Welcome to <b> ${req.params.username} </b> by <b> ${formattedeSlug} </b> profile page`
+  );
+});
+
 // -------------------------------------------------------------------------------------------
 
 // Basic Way to Show HTML Response using ExpressJS
