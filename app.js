@@ -20,54 +20,6 @@ import path from "path";
 
 const app = express();
 // -------------------------------------------------------------------------------------------
-// Absolute PATH
-// we can fecth the folder and dependancies of indexhtml files like css, script and image
-// it should be static website while using this to connect multiple file in single response
-// const staticPath = path.join(import.meta.dirname, "public", "index.html");
-// app.use(express.static(staticPath));
-// -----
-// if i wnat localhost://3001/public/ location than
-// app.use("/public", express.static(staticPath));
-// -----
-// OR
-app.use(express.static("public")); // provide direct folder name and it will fetch all files inside that folder
-const homePagePath = path.join("public", "index.html");
-
-// -------------------------------------------------------------------------------------------
-// For Home Page Route Normally
-app.get("/", (req, res) => {
-  //  for importing File Path in express
-  // console.log(__dirname);
-  // console.log(__filename);
-  // console.log(import.meta.dirname);
-  // const __filename = new URL(import.meta.url).pathname;
-  // console.log(__filename);
-  // res.send("Hi")
-  // -------------------------------------------------------------------------------------------
-  // res.sendFile(staticPath);
-
-  // For Sending Whole HTML file as Response
-  // code is above in Absolute PATH
-  res.sendFile(homePagePath);
-  // -------------------------------------------------------------------------------------------
-});
-// -------------------------------------------------------------------------------------------
-// FOR Dynamic URL Parameter
-// app.get("/profile/:username", (req, res) => {
-//   console.log(req.params);
-//   res.send(`Welcome to <b> ${req.params.username} </b> profile page`);
-// });
-// --------------------------------
-app.get("/profile/:username/article/:slug", (req, res) => {
-  console.log(req.params);
-
-  const formattedeSlug = req.params.slug.replace(/-/g, " "); // replacing - with space
-  res.send(
-    `Welcome to <b> ${req.params.username} </b> by <b> ${formattedeSlug} </b> profile page`
-  );
-});
-
-// -------------------------------------------------------------------------------------------
 
 // Basic Way to Show HTML Response using ExpressJS
 // app.get("/", (req, res) => {
@@ -101,6 +53,69 @@ app.get("/profile/:username/article/:slug", (req, res) => {
 //    "dev": "node --env-file=./.env --watch app.js"
 
 console.log("ENV PORT:", process.env.PORT);
+
+// -------------------------------------------------------------------------------------------
+// Absolute PATH
+// we can fecth the folder and dependancies of indexhtml files like css, script and image
+// it should be static website while using this to connect multiple file in single response
+// const staticPath = path.join(import.meta.dirname, "public", "index.html");
+// app.use(express.static(staticPath));
+// -----
+// if i wnat localhost://3001/public/ location than
+// app.use("/public", express.static(staticPath));
+// -----
+// OR
+app.use(express.static("public")); // provide direct folder name and it will fetch all files inside that folder
+const homePagePath = path.join("public", "index.html");
+
+// -------------------------------------------------------------------------------------------
+// For Home Page Route Normally
+app.get("/", (req, res) => {
+  //  for importing File Path in express
+  // console.log(__dirname);
+  // console.log(__filename);
+  // console.log(import.meta.dirname);
+  // const __filename = new URL(import.meta.url).pathname;
+  // console.log(__filename);
+  // res.send("Hi")
+  // -------------------------------------------------------------------------------------------
+  // res.sendFile(staticPath);
+  // For Sending Whole HTML file as Response
+  // code is above in Absolute PATH
+  // res.sendFile(homePagePath);
+  // -------------------------------------------------------------------------------------------
+});
+// -------------------------------------------------------------------------------------------
+// FOR Dynamic URL Parameter and Slug Handling
+// app.get("/profile/:username", (req, res) => {
+//   console.log(req.params);
+//   res.send(`Welcome to <b> ${req.params.username} </b> profile page`);
+// });
+// --------------------------------
+// app.get("/profile/:username/article/:slug", (req, res) => {
+//   console.log(req.params);
+
+//   const formattedeSlug = req.params.slug.replace(/-/g, " "); // replacing - with space
+//   res.send(
+//     `Welcome to <b> ${req.params.username} </b> by <b> ${formattedeSlug} </b> profile page`
+//   );
+// });
+
+// -------------------------------------------------------------------------------------------
+// For Query Parameters Handling
+app.get("/product", (req, res) => {
+  console.log(req.query);
+  // for Single Query Parameter
+  res.send(`Product Page of <b> ${req.query.name} </b>`);
+  // http://localhost:3001/product?name=iphone
+  //  for multiple Query Parameters
+  // res.send(
+  //   `Product Page of <b> ${req.query.name} </b> and Price is <b> ${req.query.price} </b>`
+  // );
+  // http://localhost:3001/product?name=iphone&price=50000
+  // query parameters are visible in URL after ? and are key value pair separated by &.
+});
+
 // -------------------------------------------------------------------------------------------
 
 app.listen(PORT, () => {
