@@ -104,9 +104,9 @@ app.get("/", (req, res) => {
 // -------------------------------------------------------------------------------------------
 // For Query Parameters Handling
 app.get("/product", (req, res) => {
-  console.log(req.query);
+  // console.log(req.query);
   // for Single Query Parameter
-  res.send(`Product Page of <b> ${req.query.name} </b>`);
+  // res.send(`Product Page of <b> ${req.query.name} </b>`);
   // http://localhost:3001/product?name=iphone
   //  for multiple Query Parameters
   // res.send(
