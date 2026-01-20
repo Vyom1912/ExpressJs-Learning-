@@ -145,6 +145,15 @@ app.post("/contect", (req, res) => {
 });
 
 // -------------------------------------------------------------------------------------------
+// For 404 - Page Not Found Handling
+app.use((req, res) => {
+  // return res.status(404).send("<h1>404 - Page Not Found</h1>");
+  return res
+    .status(404)
+    .sendFile(path.join(import.meta.dirname, "views", "404.html"));
+});
+
+// -------------------------------------------------------------------------------------------
 
 app.listen(PORT, () => {
   console.log(`Server is Running on ${PORT} Port `);
