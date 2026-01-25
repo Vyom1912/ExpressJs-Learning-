@@ -25,6 +25,48 @@ const saveLinks = async (links) => {
   await writeFile(DATA_FILE, JSON.stringify(links), "utf-8");
 };
 
+
+// for report page, template engine ejs
+router.get("/report", async (req, res) => {
+    // dynamically render report.ejs with name variable
+const students = [
+  {
+    name: "Vyom Patel",
+    grade: "10th",
+    subject: "Maths",
+    marks: 92
+  },
+  {
+    name: "Aarav Shah",
+    grade: "10th",
+    subject: "Science",
+    marks: 88
+  },
+  {
+    name: "Isha Mehta",
+    grade: "9th",
+    subject: "English",
+    marks: 90
+  },
+  {
+    name: "Rohan Verma",
+    grade: "10th",
+    subject: "Social Studies",
+    marks: 85
+  },
+  {
+    name: "Neha Singh",
+    grade: "9th",
+    subject: "Maths",
+    marks: 95
+  }
+];
+
+
+//   res.render("report", { student }); // for single student object
+  res.render("report", { students }); // for multiple student object array
+});
+
 router.get("/", async (req, res) => {
   try {
     const file = await readFile(path.join("views", "index.html"));

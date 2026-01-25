@@ -16,6 +16,12 @@ app.use(express.urlencoded({ extended: true }));
 // app.use("/", router);
 // or
 app.use("/", shortenerRouter);
+// view engine setup
+app.set("view engine", "ejs");
+// routes
+// app.set("views", "./views"); // it is default value so not necessary to write
+// app.use("/", reportRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });
