@@ -3,10 +3,9 @@ import crypto from "crypto";
 import path from "path";
 import { Router } from "express";
 
-const router=Router();
+const router = Router();
 
 const DATA_FILE = path.join("data", "links.json");
-
 
 const loadLinks = async () => {
   try {
@@ -25,45 +24,38 @@ const saveLinks = async (links) => {
   await writeFile(DATA_FILE, JSON.stringify(links), "utf-8");
 };
 
-
 // for report page, template engine ejs
 router.get("/report", async (req, res) => {
-    // dynamically render report.ejs with name variable
-const students = [
-  {
-    name: "Vyom Patel",
-    grade: "10th",
-    subject: "Maths",
-    marks: 92
-  },
-  {
-    name: "Aarav Shah",
-    grade: "10th",
-    subject: "Science",
-    marks: 88
-  },
-  {
-    name: "Isha Mehta",
-    grade: "9th",
-    subject: "English",
-    marks: 90
-  },
-  {
-    name: "Rohan Verma",
-    grade: "10th",
-    subject: "Social Studies",
-    marks: 85
-  },
-  {
-    name: "Neha Singh",
-    grade: "9th",
-    subject: "Maths",
-    marks: 95
-  }
-];
+  // dynamically render report.ejs with name variable
+  const students = [
+    {
+      name: "Vyom Patel",
+      grade: "10th",
+      subject: "Maths",
+    },
+    {
+      name: "Aarav Shah",
+      grade: "10th",
+      subject: "Science",
+    },
+    {
+      name: "Isha Mehta",
+      grade: "9th",
+      subject: "English",
+    },
+    {
+      name: "Rohan Verma",
+      grade: "10th",
+      subject: "Social Studies",
+    },
+    {
+      name: "Neha Singh",
+      grade: "9th",
+      subject: "Maths",
+    },
+  ];
 
-
-//   res.render("report", { student }); // for single student object
+  //   res.render("report", { student }); // for single student object
   res.render("report", { students }); // for multiple student object array
 });
 
@@ -138,4 +130,4 @@ router.post("/:shorten", async (req, res) => {
 // const shortenerRouter=router;
 // export default shortenerRouter;
 // or
-export const shortenerRouter=router;
+export const shortenerRouter = router;

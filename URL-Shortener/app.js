@@ -1,9 +1,9 @@
 import express from "express";
 // if use default export router in routes/shortener.routes.js
 // import { Router } from "express";
-// or 
+// or
 // import * as shortenerRoutes from "./routes/shortener.routes.js";
-import {shortenerRouter} from "./routes/shortener.routes.js";
+import { shortenerRouter } from "./routes/shortener.routes.js";
 
 export const app = express();
 
@@ -19,8 +19,8 @@ app.use("/", shortenerRouter);
 // view engine setup
 app.set("view engine", "ejs");
 // routes
-// app.set("views", "./views"); // it is default value so not necessary to write
-// app.use("/", reportRoutes);
+app.set("views", "./views"); // it is default value so not necessary to write
+// app.use("/", shortener.routes);
 
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
