@@ -5,27 +5,13 @@ import { loadLinks, saveLinks } from "../models/shortener.model.js";
 
 export const getURLShortner = async (req, res) => {
   try {
-    const file = await readFile(path.join("views", "index.html"));
+    // const file = await readFile(path.join("views", "index.html")); // if we want to send html file directly without template engine
     const links = await loadLinks();
-
-    const list = Object.entries(links)
-      .map(
-        ([shortCode, url]) =>
-          `<li><a href="/${shortCode}" target="_blank">${req.host}</a> - ${url}</li>`,
-      )
-      .join("");
-    res.send(file.toString().replaceAll("{{shortened_urls}}", list));
-    // ----------- OR ----------- for replacing in  url list dynamically
-    // const content = file.toString().replaceAll(
-    //   "{{shortened_urls}}",
-    //   Object.entries(links)
-    //     .map(
-    //       ([shortCode, url]) =>
-    //         `<li><a href="/${shortCode}" target="_blank">${req.host}</a> - ${url}</li>`,
-    //     )
-    //     .join(""),
-    // );
-    // return res.send(content);
+    // ejs template engine directly rendering like below index.ejs file from views folder
+    return res.render("index", {
+      links,
+      host: req.host,
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).send(" get Internal Server Error");
