@@ -42,6 +42,7 @@ export const postURLShortner = async (req, res) => {
 export const redirectToShortCode = async (req, res) => {
   try {
     const { shortCode } = req.params;
+
     const links = await loadLinks();
     if (!links[shortCode]) {
       return res.status(404).send("Short URL not found");

@@ -33,7 +33,7 @@
       <!-- <ul {{shortened_urls}}></ul> -->
        <ul>
         
-   <!-- Object.entries(links)
+      <!-- Object.entries(links)
       .map(
         ([shortCode, url]) =>
           `<li><a href="/${shortCode}" target="_blank">${host}</a> - ${url}</li>`,
@@ -41,13 +41,13 @@
       .join(""); -->
         <% Object.entries(links).map(([shortCode, url]) =>{ %> 
         <% const turncatedUrl = url.length > 20 ? url.substring(0, 20) + "..." : url %>
-<li>
-  <a href="/<%= shortCode %>" target="_blank">
-    <%= host %> / <%= shortCode %>
-  </a> 
-  - <%= turncatedUrl %>
-</li>
-      <%  }) %>
+        <li>
+          <a href="/<%= shortCode %>" target="_blank">
+            <%= host %> / <%= shortCode %>
+          </a> 
+          - <%= turncatedUrl %>
+        </li>
+        <%  }) %>
 
     <!-- // ----------- OR ----------- for replacing in  url list dynamically
     // const content = file.toString().replaceAll(

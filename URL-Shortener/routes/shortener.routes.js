@@ -45,7 +45,7 @@ router.get("/", getURLShortner);
 
 router.post("/", postURLShortner);
 
-router.post("/:shorten", redirectToShortCode);
+router.get("/:shortCode", redirectToShortCode);
 // small project
 // export default router;
 
